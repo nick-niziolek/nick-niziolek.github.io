@@ -4,6 +4,14 @@
 @import "{{ site.theme }}";
 
 body {
-    background: #fffbdb; /* Replace with your desired color */
+    background: #F5F5DC; /* Replace with your desired color */
     color: #2c2c2c
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #2c2c2c;
+}
+
+a {
+    color: #2c2c2c;
 }
