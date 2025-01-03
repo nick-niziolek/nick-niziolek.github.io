@@ -8,5 +8,7 @@ description: Aerospace engineering cenetered PhD graduate student, studying at T
 
 navigation:
   - title: Home
-    url: /index/
+    url: /home/
+  - title: Research
+    url: /research/
 
