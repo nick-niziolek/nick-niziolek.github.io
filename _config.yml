@@ -4,4 +4,9 @@ plugins:
 
 title: Nick Niziolek
 logo: /assets/img/logosmall.png
-description: Aerospace engineering cenetered PhD graduate student, studying at The University of Colorado at Boulder. 
+description: Aerospace engineering cenetered PhD graduate student, studying at The University of Colorado at Boulder. This is my page to share my work and experiences.
+
+navigation:
+  - title: Home
+    url: /index/
+
