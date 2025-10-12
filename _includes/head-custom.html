@@ -1,0 +1,6 @@
+<script>
+  // expose navigation to client-side JS so we can inject a dropdown into theme header
+  window.SITE_NAV = {{ site.navigation | jsonify }};
+</script>
+
+<script src="{{ '/assets/js/nav-dropdown.js' | relative_url }}" defer></script>

@@ -2,11 +2,13 @@ theme: jekyll-theme-slate
 
 title: Nick Niziolek
 logo: /assets/img/logosmall.png
-description: Aerospace Engineering PhD student at CU Boulder, focused on decentralized planning and autonomy.
+# description: Aerospace Engineering PhD student at CU Boulder, focused on decentralized planning and autonomy.
 
 navigation:
   - title: Home
     url: /home/
   - title: Research
     url: /research/
+  - title: Projects
+    url: /projects/
 

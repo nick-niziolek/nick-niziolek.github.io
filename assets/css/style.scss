@@ -15,3 +15,47 @@ h1,h2,h3,h4,h5,h6 {
 a {
     color: #2c2c2c;
 }
+
+/* Dropdown navigation overrides */
+.site-header { display:flex; align-items:center; justify-content:space-between; padding: .5rem 1rem; }
+.site-branding { display:flex; align-items:center; gap:.5rem }
+.site-logo { height:2rem }
+.site-title { font-weight:600 }
+.site-nav { display:flex }
+.nav-list { list-style:none; margin:0; padding:0; display:flex; gap:1rem; align-items:center }
+.nav-item { position:relative }
+.nav-link, .nav-toggle { color:inherit; background:none; border:none; cursor:pointer; padding:.25rem .5rem; text-decoration:none; font:inherit }
+.dropdown { display:none; position:absolute; left:0; top:100%; background:#fff; border:1px solid #ddd; min-width:10rem; box-shadow:0 6px 12px rgba(0,0,0,.08); z-index:1000 }
+.dropdown .dropdown-item a { display:block; padding:.5rem 1rem; color:#2c2c2c }
+.nav-item.has-children:hover > .dropdown, .nav-item.has-children.open > .dropdown { display:block }
+
+/* Theme header adjustments: make nav visible on dark background */
+#header_wrap .site-nav .nav-link, #header_wrap .site-nav .nav-toggle { color: #fff }
+#header_wrap .site-nav .dropdown { background: #fff; color: #2c2c2c; z-index: 2000 }
+
+/* Ensure dropdown links are dark when nav links are forced white on header */
+#header_wrap .site-nav .dropdown a { color: #2c2c2c; }
+#header_wrap .site-nav .dropdown a:hover, #header_wrap .site-nav .dropdown a:focus { background:#f5f5f5 }
+
+/* Profile layout: headshot beside text */
+.profile { display:flex; gap:1rem; align-items:flex-start; margin: 1rem 0 }
+.profile-image img { border-radius: 6px; display:block }
+.profile-bio { flex:1 }
+
+@media screen and (max-width: 640px) {
+    .profile { flex-direction:column; align-items:center }
+    .profile-image img { width:120px; height:auto }
+}
+
+/* Automatic alternating for lists of profiles */
+.profiles .profile { display:flex; gap:1rem; align-items:flex-start; margin:1rem 0 }
+.profiles .profile .profile-image { flex: 0 0 200px }
+.profiles .profile .profile-bio { flex: 1 }
+.profiles .profile:nth-child(even) { flex-direction: row-reverse }
+.profiles .profile:nth-child(even) .profile-image { text-align:right }
+
+@media screen and (max-width: 640px) {
+    .profiles .profile, .profiles .profile:nth-child(even) { flex-direction:column; align-items:center; text-align:center }
+    .profiles .profile .profile-image, .profiles .profile:nth-child(even) .profile-image { flex: none; width:120px }
+}
+
