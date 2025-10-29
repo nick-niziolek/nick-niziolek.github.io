@@ -9,7 +9,7 @@ layout: default
 Scope to point out what star it is pointed at using astrometry. 
 
 - Needs: 
--- Some way to figure out orientation (Astrometry)
+-- Some way to figure out orientation (Astrometry.net API Calls)
 -- Some way to display relevant info on scope (Mirror to OLED?)
 -- Some way to perform the processing on board or close by
   
