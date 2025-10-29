@@ -1,0 +1,17 @@
+---
+title: Handheld Astrometry
+permalink: /projects/handheld-astrometry/
+layout: default
+---
+
+# Handheld Astrometry
+
+Scope to point out what star it is pointed at using astrometry. 
+
+- Needs: 
+-- Some way to figure out orientation (Astrometry)
+-- Some way to display relevant info on scope (Mirror to OLED?)
+-- Some way to perform the processing on board or close by
+  
+- Status: Idea phase
+- Languages: Python
