@@ -12,6 +12,18 @@ Scope to point out what star it is pointed at using astrometry.
 -- Some way to figure out orientation (Astrometry.net API Calls)
 -- Some way to display relevant info on scope (Mirror to OLED?)
 -- Some way to perform the processing on board or close by
+
+- HUD Notes: 
+-- Use OLED with collimating lens (i.e. plano convex with oled at focal length away) to make image appear at infinity 
+-- Use glass at 45 degree to reflect into eyepiece
+
+- Position/Attitude Tracking
+-- AHRS to get rough orientation solution 
+-- GPS to get reference lat lon
+-- correct solution with actual observations 
+-- Take observations with camera and Astrometry API
+--- Can this be fed attitude estimates?
+--- Use openCV to mask the stars? 
   
 - Status: Idea phase
 - Languages: Python
