@@ -2,14 +2,15 @@ body {
     font-family: monospace;
     background: #ffffff;
     color: #111;
+    margin: 0;
+    padding: 20px;
 }
 
-.content {
+pre {
+    white-space: pre-wrap;  /* preserves line breaks but wraps text on small screens */
+    line-height: 1.5;
     max-width: 720px;
-    margin: 40px auto;
-    padding: 0 20px;
-    line-height: 1.6;
-    white-space: pre-line;
+    margin: auto;
 }
 
 a {
