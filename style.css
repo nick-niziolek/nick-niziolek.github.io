@@ -1,6 +1,6 @@
 body {
     font-family: monospace;
-    background: #222;   /* dark grey background */
+    background: #121212;   /* dark grey background */
     color: #f0f0f0;     /* light text for contrast */
     margin: 0;
     padding: 20px;
@@ -14,7 +14,7 @@ pre {
 }
 
 a {
-    color: #0645ad;
+    color: #00bbff;      /* cyan links for a “retro terminal” feel */
     text-decoration: none;
 }
 
