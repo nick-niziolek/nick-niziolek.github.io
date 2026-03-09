@@ -1,7 +1,7 @@
 body {
     font-family: monospace;
-    background: #ffffff;
-    color: #111;
+    background: #222;   /* dark grey background */
+    color: #f0f0f0;     /* light text for contrast */
     margin: 0;
     padding: 20px;
 }
