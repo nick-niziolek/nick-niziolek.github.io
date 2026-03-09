@@ -1,13 +1,17 @@
 body {
     font-family: monospace;
-    max-width: 700px;
+    background: #ffffff;
+    color: #111;
+}
+
+.content {
+    max-width: 720px;
     margin: 40px auto;
-    padding: 0 15px;
+    padding: 0 20px;
     line-height: 1.6;
     white-space: pre-line;
 }
 
-/* links */
 a {
     color: #0645ad;
     text-decoration: none;
@@ -15,26 +19,4 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-/* headings */
-h1, h2, h3 {
-    font-weight: normal;
-}
-
-/* lists */
-ul {
-    padding-left: 20px;
-}
-
-/* horizontal separators */
-hr {
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 25px 0;
-}
-
-/* code / preformatted text */
-pre {
-    white-space: pre-wrap;
 }
