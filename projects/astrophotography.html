@@ -12,9 +12,9 @@ Nick Niziolek - astrophotography
 -----------------------
 </pre>
 
-<div class="ascii-frame" id="frame">
-  <pre id="border-pre"></pre>
-  <img src="../images/proc_color_small.png" alt="Orion Nebula" id="astro-img">
+<!-- no cols/rows = uses defaults (40x18) -->
+<div class="ascii-frame">
+  <img src="../images/orion.png" alt="Orion Nebula">
   <div class="caption">Orion Nebulae</div>
 </div>
 
@@ -23,60 +23,6 @@ Nick Niziolek - astrophotography
 <a href="index.html">[home]</a>
 last updated: March 2026
 </pre>
-
-<script>
-(function() {
-  // How many characters wide and tall we want the image area to be
-  const COLS = 40; // inner character columns (excluding the | borders)
-  const ROWS = 18; // inner character rows (excluding top/bottom borders)
-
-  const pre  = document.getElementById('border-pre');
-  const img  = document.getElementById('astro-img');
-
-  // Build the ASCII border as plain text
-  // Top:    +----...----+
-  // Middle: |           |   (ROWS times)
-  // Bottom: +----...----+
-  const dash  = '-'.repeat(COLS);
-  const space = ' '.repeat(COLS);
-  const top    = '+' + dash  + '+';
-  const middle = '|' + space + '|';
-  const bottom = '+' + dash  + '+';
-
-  const lines = [top, ...Array(ROWS).fill(middle), bottom];
-  pre.textContent = lines.join('\n');
-
-  // Once the pre is in the DOM and the font has rendered,
-  // measure a single character so we can place the image perfectly.
-  function positionImage() {
-    // Measure one character using a temporary span
-    const span = document.createElement('span');
-    span.textContent = 'X';
-    span.style.visibility = 'hidden';
-    span.style.position = 'absolute';
-    pre.appendChild(span);
-    const charW = span.getBoundingClientRect().width;
-    const charH = span.getBoundingClientRect().height;
-    pre.removeChild(span);
-
-    // Image sits inside the border:
-    //   left offset = 1 char (the leading |)
-    //   top offset  = 1 line (the top +---+ row)
-    img.style.left   = charW + 'px';
-    img.style.top    = charH + 'px';
-    img.style.width  = (charW * COLS) + 'px';
-    img.style.height = (charH * ROWS) + 'px';
-  }
-
-  // Run after fonts/layout are ready
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(positionImage);
-  } else {
-    window.addEventListener('load', positionImage);
-  }
-  window.addEventListener('resize', positionImage);
-})();
-</script>
 
 </body>
 </html>
