@@ -12,37 +12,71 @@ Nick Niziolek - astrophotography
 -----------------------
 </pre>
 
-<figure class="ascii-frame">
-  <figcaption class="ascii-top"></figcaption>
-  <div class="ascii-middle">
-    <img src="../images/proc_color_small.png" alt="Orion Nebula" id="astro-img">
-  </div>
-  <figcaption class="ascii-bottom"></figcaption>
+<div class="ascii-frame" id="frame">
+  <pre id="border-pre"></pre>
+  <img src="../images/proc_color_small.png" alt="Orion Nebula" id="astro-img">
   <div class="caption">Orion Nebulae</div>
-</figure>
-
-<script>
-  const img = document.getElementById('astro-img');
-  function drawBorders() {
-    const frame = img.closest('.ascii-frame');
-    // Each character is 1ch wide; get pixel width and divide
-    const charWidth = parseFloat(getComputedStyle(document.body).fontSize) * 0.6; // approx monospace char width
-    const imgWidth = img.offsetWidth;
-    const cols = Math.round(imgWidth / charWidth);
-    const top = '+' + '-'.repeat(cols) + '+';
-    frame.querySelector('.ascii-top').textContent = top;
-    frame.querySelector('.ascii-bottom').textContent = top;
-  }
-  img.addEventListener('load', drawBorders);
-  window.addEventListener('resize', drawBorders);
-  if (img.complete) drawBorders();
-</script>
+</div>
 
 <pre>
 --------------------------------------------------
 <a href="index.html">[home]</a>
 last updated: March 2026
 </pre>
+
+<script>
+(function() {
+  // How many characters wide and tall we want the image area to be
+  const COLS = 40; // inner character columns (excluding the | borders)
+  const ROWS = 18; // inner character rows (excluding top/bottom borders)
+
+  const pre  = document.getElementById('border-pre');
+  const img  = document.getElementById('astro-img');
+
+  // Build the ASCII border as plain text
+  // Top:    +----...----+
+  // Middle: |           |   (ROWS times)
+  // Bottom: +----...----+
+  const dash  = '-'.repeat(COLS);
+  const space = ' '.repeat(COLS);
+  const top    = '+' + dash  + '+';
+  const middle = '|' + space + '|';
+  const bottom = '+' + dash  + '+';
+
+  const lines = [top, ...Array(ROWS).fill(middle), bottom];
+  pre.textContent = lines.join('\n');
+
+  // Once the pre is in the DOM and the font has rendered,
+  // measure a single character so we can place the image perfectly.
+  function positionImage() {
+    // Measure one character using a temporary span
+    const span = document.createElement('span');
+    span.textContent = 'X';
+    span.style.visibility = 'hidden';
+    span.style.position = 'absolute';
+    pre.appendChild(span);
+    const charW = span.getBoundingClientRect().width;
+    const charH = span.getBoundingClientRect().height;
+    pre.removeChild(span);
+
+    // Image sits inside the border:
+    //   left offset = 1 char (the leading |)
+    //   top offset  = 1 line (the top +---+ row)
+    img.style.left   = charW + 'px';
+    img.style.top    = charH + 'px';
+    img.style.width  = (charW * COLS) + 'px';
+    img.style.height = (charH * ROWS) + 'px';
+  }
+
+  // Run after fonts/layout are ready
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(positionImage);
+  } else {
+    window.addEventListener('load', positionImage);
+  }
+  window.addEventListener('resize', positionImage);
+})();
+</script>
 
 </body>
 </html>
