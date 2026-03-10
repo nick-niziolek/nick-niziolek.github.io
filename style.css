@@ -1,7 +1,7 @@
 body {
     font-family: monospace;
     background: #121212;   /* dark grey background */
-    color: #f0f0f0;     /* light text for contrast */
+    color: #f0f0f0;        /* light text for contrast */
     margin: 0;
     padding: 20px;
 }
@@ -14,7 +14,7 @@ pre {
 }
 
 a {
-    color: #00bbff;      /* cyan links for a “retro terminal” feel */
+    color: #00bbff;      /* cyan links for retro terminal feel */
     text-decoration: none;
 }
 
@@ -26,9 +26,17 @@ a:hover {
     text-align: center;
     font-family: monospace;
     margin: 20px auto;
+    max-width: 720px;
 }
 
 .ascii-box img {
-    max-width: 100%;
-    border: none;
+    max-width: 90%;        /* responsive image */
+    display: block;
+    margin: 0 auto;        /* center inside ASCII box */
+}
+
+.caption {
+    font-family: monospace;
+    font-size: 0.9em;
+    margin-top: 5px;
 }
