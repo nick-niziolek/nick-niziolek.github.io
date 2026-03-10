@@ -1,3 +1,7 @@
+ :root {
+    --content-width: 720px;
+}
+
 body {
     font-family: monospace;
     background: #121212;   /* dark grey background */
@@ -9,8 +13,18 @@ body {
 pre {
     white-space: pre-wrap;
     line-height: 1.5;
-    max-width: 720px;
+    max-width: var(--content-width);
     margin: auto;
+}
+
+.full-width-rule {
+    display: block;
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 20px auto;
+    white-space: pre;
+    overflow: hidden;
+    line-height: 1.5;
 }
 
 a {
@@ -25,9 +39,10 @@ a:hover {
 /* ASCII art frame styles */
 .ascii-frame {
     display: block;
+    position: relative;
     text-align: center;
     margin: 20px auto;
-    max-width: 720px;
+    max-width: var(--content-width);
     padding: 0;
 }
 
