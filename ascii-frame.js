@@ -1,7 +1,4 @@
 (function() {
-  const CHAR_COLS = 40;
-  const CHAR_ROWS = 18;
-
   function buildFrame(container) {
     const img = container.querySelector('img');
     if (!img) return;
@@ -9,23 +6,31 @@
     const pre = document.createElement('pre');
     container.insertBefore(pre, img);
 
-    const cols = parseInt(container.dataset.cols) || CHAR_COLS;
-    const rows = parseInt(container.dataset.rows) || CHAR_ROWS;
+    // Measure a single character
+    const span = document.createElement('span');
+    span.textContent = 'X';
+    span.style.visibility = 'hidden';
+    span.style.position = 'absolute';
+    document.body.appendChild(span);
+    const charW = span.getBoundingClientRect().width;
+    const charH = span.getBoundingClientRect().height;
+    document.body.removeChild(span);
 
-    const top    = '+' + '-'.repeat(cols) + '+';
-    const middle = '|' + ' '.repeat(cols) + '|';
-    const bottom = '+' + '-'.repeat(cols) + '+';
-    pre.textContent = [top, ...Array(rows).fill(middle), bottom].join('\n');
+    function redraw() {
+      // cols = how many characters fit in the container (minus 2 for the | borders)
+      const availableWidth = container.getBoundingClientRect().width;
+      const cols = Math.floor(availableWidth / charW) - 2;
 
-    function positionImage() {
-      const span = document.createElement('span');
-      span.textContent = 'X';
-      span.style.visibility = 'hidden';
-      span.style.position = 'absolute';
-      pre.appendChild(span);
-      const charW = span.getBoundingClientRect().width;
-      const charH = span.getBoundingClientRect().height;
-      pre.removeChild(span);
+      // rows = maintain the image's natural aspect ratio
+      const aspect = img.naturalWidth / img.naturalHeight;
+      const imagePixelWidth = cols * charW;
+      const imagePixelHeight = imagePixelWidth / aspect;
+      const rows = Math.round(imagePixelHeight / charH);
+
+      const top    = '+' + '-'.repeat(cols) + '+';
+      const middle = '|' + ' '.repeat(cols) + '|';
+      const bottom = '+' + '-'.repeat(cols) + '+';
+      pre.textContent = [top, ...Array(rows).fill(middle), bottom].join('\n');
 
       img.style.position = 'absolute';
       img.style.left     = charW + 'px';
@@ -34,12 +39,20 @@
       img.style.height   = (charH * rows) + 'px';
     }
 
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(positionImage);
-    } else {
-      window.addEventListener('load', positionImage);
+    function init() {
+      if (img.naturalWidth) {
+        redraw();
+      } else {
+        img.addEventListener('load', redraw);
+      }
+      window.addEventListener('resize', redraw);
     }
-    window.addEventListener('resize', positionImage);
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(init);
+    } else {
+      window.addEventListener('load', init);
+    }
   }
 
   document.querySelectorAll('.ascii-frame').forEach(buildFrame);

@@ -43,6 +43,8 @@ a:hover {
 .ascii-frame img {
     position: absolute;
     display: block;
+    width: 0;
+    height: 0;
 }
 
 .caption {
