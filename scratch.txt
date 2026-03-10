@@ -1,3 +1,0 @@
-Publications:
- - Niziolek, N., et al. "Distributed Observation Scheduling and Sensor Fusion for Large Agile Constellations." submitted to AAS GN&C Conference, 2026. 
- - Niziolek, N., et al. "Decentralized Allocation of Observation Tasks for Cooperating Agile Spacecraft Clusters." submitted to IEEE Aerospace Conference, 2026.
