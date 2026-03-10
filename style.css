@@ -7,14 +7,14 @@ body {
 }
 
 pre {
-    white-space: pre-wrap;  /* preserves line breaks but wraps text on small screens */
+    white-space: pre-wrap;
     line-height: 1.5;
     max-width: 720px;
     margin: auto;
 }
 
 a {
-    color: #00bbff;      /* cyan links for retro terminal feel */
+    color: #00bbff;
     text-decoration: none;
 }
 
@@ -22,6 +22,7 @@ a:hover {
     text-decoration: underline;
 }
 
+/* ASCII box styling */
 .ascii-box {
     text-align: center;
     font-family: monospace;
@@ -29,10 +30,24 @@ a:hover {
     max-width: 720px;
 }
 
-.ascii-box img {
-    max-width: 90%;        /* responsive image */
+/* Top and bottom +---+ lines */
+.ascii-top, .ascii-bottom {
+    font-family: monospace;
+}
+
+/* Middle image container with simulated | | sides */
+.ascii-middle {
+    display: inline-block;
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    padding: 0; 
+}
+
+/* Make image responsive inside ASCII box */
+.ascii-middle img {
+    max-width: 100%;
     display: block;
-    margin: 0 auto;        /* center inside ASCII box */
+    margin: 0 auto;
 }
 
 .caption {
