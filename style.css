@@ -24,30 +24,32 @@ a:hover {
 
 /* ASCII box styling */
 .ascii-box {
-    text-align: center;
     font-family: monospace;
+    text-align: center;
     margin: 20px auto;
     max-width: 720px;
 }
 
-/* Top and bottom +---+ lines */
 .ascii-top, .ascii-bottom {
     font-family: monospace;
+    margin: 0;
 }
 
-/* Middle image container with simulated | | sides */
+/* Middle wrapper */
 .ascii-middle {
-    display: inline-block;
+    display: inline-block;      /* shrink-wrap content */
+    width: 26ch;                /* exactly the width of your ASCII top line in characters */
     border-left: 1px solid #f0f0f0;
     border-right: 1px solid #f0f0f0;
-    padding: 0; 
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Make image responsive inside ASCII box */
+/* Image scales to wrapper width */
 .ascii-middle img {
-    max-width: 100%;
+    width: 100%;   /* image fits exactly inside the box */
+    height: auto;
     display: block;
-    margin: 0 auto;
 }
 
 .caption {
