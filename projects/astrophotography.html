@@ -12,14 +12,31 @@ Nick Niziolek - astrophotography
 -----------------------
 </pre>
 
-<div class="ascii-box">
-  <pre class="ascii-top">+------------------------+</pre>
+<figure class="ascii-frame">
+  <figcaption class="ascii-top"></figcaption>
   <div class="ascii-middle">
-    <img src="../images/proc_color_small.png" alt="UAV">
+    <img src="../images/proc_color_small.png" alt="Orion Nebula" id="astro-img">
   </div>
-  <pre class="ascii-bottom">+------------------------+</pre>
-  <div class="caption">UAV Test Flight</div>
-</div>
+  <figcaption class="ascii-bottom"></figcaption>
+  <div class="caption">Orion Nebulae</div>
+</figure>
+
+<script>
+  const img = document.getElementById('astro-img');
+  function drawBorders() {
+    const frame = img.closest('.ascii-frame');
+    // Each character is 1ch wide; get pixel width and divide
+    const charWidth = parseFloat(getComputedStyle(document.body).fontSize) * 0.6; // approx monospace char width
+    const imgWidth = img.offsetWidth;
+    const cols = Math.round(imgWidth / charWidth);
+    const top = '+' + '-'.repeat(cols) + '+';
+    frame.querySelector('.ascii-top').textContent = top;
+    frame.querySelector('.ascii-bottom').textContent = top;
+  }
+  img.addEventListener('load', drawBorders);
+  window.addEventListener('resize', drawBorders);
+  if (img.complete) drawBorders();
+</script>
 
 <pre>
 --------------------------------------------------

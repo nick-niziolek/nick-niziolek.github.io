@@ -22,38 +22,50 @@ a:hover {
     text-decoration: underline;
 }
 
-/* ASCII box styling */
-.ascii-box {
-    font-family: monospace;
-    text-align: center;
-    margin: 20px auto;
-    max-width: 720px;
+/* ASCII art frame styles */
+.ascii-frame {
+  font-family: monospace;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 720px;
+  display: block; /* figure reset */
+  padding: 0;
 }
 
 .ascii-top, .ascii-bottom {
-    font-family: monospace;
-    margin: 0;
+  display: block;
+  margin: 0;
+  line-height: 1.2;
+  font-family: monospace;
+  color: #f0f0f0;
+  white-space: pre;
 }
 
-/* Middle wrapper */
 .ascii-middle {
-    display: inline-block;      /* shrink-wrap content */
-    width: 26ch;                /* exactly the width of your ASCII top line in characters */
-    border-left: 1px solid #f0f0f0;
-    border-right: 1px solid #f0f0f0;
-    padding: 0;
-    box-sizing: border-box;
+  display: inline-block;
+  border-left: 1ch solid #f0f0f0;
+  border-right: 1ch solid #f0f0f0;
+  /* Use character-width borders that match the | glyph visually */
+  padding: 0;
+  line-height: 0; /* remove gap under image */
+  font-size: inherit;
 }
 
-/* Image scales to wrapper width */
+/* Make border columns look like | characters */
+.ascii-middle {
+  outline: none;
+  border-left: 1ch solid transparent;
+  border-right: 1ch solid transparent;
+  background-image:
+    linear-gradient(#f0f0f0, #f0f0f0),
+    linear-gradient(#f0f0f0, #f0f0f0);
+  background-size: 1px 100%;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+}
+
 .ascii-middle img {
-    width: 100%;   /* image fits exactly inside the box */
-    height: auto;
-    display: block;
-}
-
-.caption {
-    font-family: monospace;
-    font-size: 0.9em;
-    margin-top: 5px;
+  width: 320px; /* fixed width so borders are predictable */
+  height: auto;
+  display: block;
 }
