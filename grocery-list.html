@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nick Niziolek</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="text-rules.js" defer></script>
+</head>
+<body>
+
+<pre>
+Nick Niziolek - hwheek of 3/18 ISH
+-----------------------
+</pre>
+
+<form id="grocery-checklist" aria-label="checklist">
+  <label><input type="checkbox" id="item-brussel"> brussel sprouts</label><br>
+  <label><input type="checkbox" id="item-broccoli"> broccoli</label><br>
+  <label><input type="checkbox" id="item-cucumber"> cucumber</label><br>
+  <label><input type="checkbox" id="item-red-onion"> red onion</label><br>
+  <label><input type="checkbox" id="item-peppers"> peppers</label><br>
+  <label><input type="checkbox" id="item-celery"> celery</label><br>
+  <label><input type="checkbox" id="item-carrots"> carrots</label><br>
+  <label><input type="checkbox" id="item-yogurt"> yogurt</label><br>
+  <label><input type="checkbox" id="item-frozen-fruit"> frozen fruit</label><br>
+  <label><input type="checkbox" id="item-eggs"> eggs</label><br>
+  <label><input type="checkbox" id="item-bread"> bread</label><br>
+</form>
+
+<script>
+  const checklistItems = document.querySelectorAll("#grocery-checklist input[type='checkbox']");
+
+  checklistItems.forEach((item) => {
+    item.checked = localStorage.getItem(item.id) === "true";
+
+    item.addEventListener("change", () => {
+      localStorage.setItem(item.id, String(item.checked));
+    });
+  });
+</script>
+
+<pre class="full-width-rule" data-rule-char="-"></pre>
+
+<pre>
+<a href="index.html">[home]</a>
+last updated: March 2026
+</pre>
+
+</body>
+</html>
+
+<!-- Common Items:
+ <label><input type="checkbox" id="item-brussel"> brussel sprouts</label><br>
+ <label><input type="checkbox" id="item-broccoli"> broccoli</label><br>
+ <label><input type="checkbox" id="item-cucumber"> cucumber</label><br>
+ <label><input type="checkbox" id="item-red-onion"> red onion</label><br>
+ <label><input type="checkbox" id="item-peppers"> peppers</label><br>
+ <label><input type="checkbox" id="item-celery"> celery</label><br>
+ <label><input type="checkbox" id="item-carrots"> carrots</label><br>
+ <label><input type="checkbox" id="item-yogurt"> yogurt</label><br>
+ <label><input type="checkbox" id="item-frozen-fruit"> frozen fruit</label><br>
+ <label><input type="checkbox" id="item-eggs"> eggs</label><br>
+ <label><input type="checkbox" id="item-bread"> bread</label><br>
+-->
